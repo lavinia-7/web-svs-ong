@@ -11,7 +11,9 @@
     
     <header>
        <h3>Food Ninja</h3>
-        <nav>
+       <button id="open-btn" style="font-size: 25px;">=</button>
+       <nav>
+        <button id="close-btn">X</button>
             <a href="article.html">Blog</a>
             <a href="about.html">About</a>
             <a href="contact.html">Contact</a>
@@ -35,16 +37,18 @@
     </div>
     
     <div class="articles">
-    </div>
-    <script>
-      async function fetchUserData() {
-  try {
-    const response = await fetch(`http://localhost:3000/articles`);
-    const data = await response.json();
-    data.forEach(article => {
-      const articleElement = document.createElement('article');
-      articleElement.innerHTML = `
-        <img src="${article.image}">
+      <article>
+        <img src="img/greece-travel.png">
+        <div class="content">
+          <span class="categ">Travel</span>
+          <h2> What Traveling Greece For 2 Weeks Taught Me About Life</h2>
+          <p class="date">Jun 21, 2021 · 11 min read</p>
+         <p class="description">Hidden coves, ancient ruins, and meals that redefine what food means.</p>
+        </div>
+      </article>
+
+      <article>
+        <img src="img/chicken-nuggets-fries.png">
         <div class="content">
           <span class="categ">${article.category}</span>
           <h2>${article.title}</h2>
