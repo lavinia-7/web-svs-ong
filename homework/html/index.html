@@ -35,65 +35,32 @@
     </div>
     
     <div class="articles">
-      <article>
-        <img src="img/chicken-nuggets-fries.png">
-        <div class="content">
-          <span class="categ">Travel</span>
-          <h2> What Traveling Greece For 2 Weeks Taught Me About Life</h2>
-          <p class="date">Jun 21, 2021 · 11 min read</p>
-         <p class="description">Hidden coves, ancient ruins, and meals that redefine what food means.</p>
-        </div>
-      </article>
-
-      <article>
-        <img src="img/chicken-nuggets-fries.png">
-        <div class="content">
-          <span class="categ">Food Theory</span>
-          <h2> Why You Should Never Order 12 Chicken Nuggets and Fries</h2>
-          <p class="date"> Aug 1, 2021 · 7 min read</p>
-          <p class="description">The math, the science, and the dark truth behind combo meal pricing.</p>
-        </div>
-      </article>
-
-      <article>
-        <img src="img/ramen-broth.png">
-        <div class="content">
-          <span class="categ">Recipes</span>
-          <h2>The Perfect Homemade Ramen Broth Recipe</h2>
-          <p class="date">Sep 14, 2021 · 9 min read</p>
-          <p class="description">Twelve hours of simmering and a tare that will ruin all other broths for you.</p>
-        </div>
-      </article>
-
-      <article>
-        <img src="img/tokyo-restaurants.png">
-        <div class="content">
-          <span class="categ"> Restaurants</span>
-          <h2>The Best Hidden Restaurants in Tokyo You Need to Visit</h2>
-          <p class="date"> Oct 3, 2021 · 6 min read</p>
-          <p class="description">Down unmarked alleys — the izakayas that locals keep to themselves.</p>
-        </div>
-      </article>
-
-      <article>
-        <img src="img/vietnam-food-diary.png">
-        <div class="content">
-          <span class="categ">Travel</span>
-          <h2>Eating My Way Through Vietnam: A 10-Day Food Diary</h2>
-          <p class="date">Nov 18, 2021 · 14 min read</p>
-          <p class="description">From banh mi carts at 6am to midnight pho in Hanoi.</p>
-        </div>
-      </article>
-   
-      <article>
-        <img src="img/olive-oil.png">
-        <div class="content">
-          <span class="categ">Food Theory</span>
-          <h2>Why Expensive Olive Oil Is Almost Never Worth It</h2>
-          <p class="date"> Dec 5, 2021 · 5 min read</p>
-          <p class="description"> Blind taste tests, industry fraud, and what the label is actually telling you.</p>
-        </div>
-      </article>
     </div>
+    <script>
+      async function fetchUserData() {
+  try {
+    const response = await fetch(`http://localhost:3000/articles`);
+    const data = await response.json();
+    data.forEach(article => {
+      const articleElement = document.createElement('article');
+      articleElement.innerHTML = `
+        <img src="${article.image}">
+        <div class="content">
+          <span class="categ">${article.category}</span>
+          <h2>${article.title}</h2>
+          <p class="date">${article.date} · ${article.readTime} min read</p>
+          <p class="description">${article.description}</p>
+        </div>
+      `;
+      document.querySelector('.articles').appendChild(articleElement);
+    });
+    console.log(data);
+  } catch (error) {
+    console.error("Error fetching user data:", error);
+  }
+}
+
+      fetchUserData();
+    </script>
   </body>
 </html>
