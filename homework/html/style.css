@@ -49,6 +49,7 @@ nav {
 
 .buttons {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
 }
 
@@ -128,5 +129,10 @@ nav a {
 
 #close-btn {
     display: none;
+}
+
+
+.articles {
+   grid-template-columns: repeat(2, 1fr);
 }
     }
