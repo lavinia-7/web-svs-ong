@@ -4,27 +4,66 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    About Food Ninja
-    Exploring the world one meal at a time.
-
-    Welcome to Food Ninja, a blog dedicated to food culture, travel, and the stories behind what we eat. I'm James Doe, a food writer and passionate traveler who believes that understanding a place means understanding its food.
-
-    My Story
-    I started Food Ninja in 2020 as a way to document my culinary adventures around the world. What began as a personal journal has grown into a community of food enthusiasts who share a curiosity about food, culture, and the connections between them.
-
-    From hidden izakayas in Tokyo to street food in Vietnam, from family recipes passed down through generations to the science behind why we crave certain flavors—there's always more to discover about food.
-
-    What I Write About
-    Food Ninja covers four main areas:
-
-    Travel — Food experiences and culinary adventures around the world
-    Food Theory — The science, history, and culture behind food and cooking
-    Recipes — Tested recipes and techniques worth mastering
-    Restaurants — Hidden gems and notable dining experiences
-    
-    Let's Connect
-    I'd love to hear from you! Whether you have a restaurant recommendation, a recipe to share, or just want to chat about food, reach out on the contact page.
+    <div class="sticky-element">
+    <header style="display: flex; justify-content: space-between; padding-bottom: 10px;">
+        <span style="font-weight: bold; font-size: 20px; color: #111111; align-self: center;">Food Ninja</span>
+        <div class="link-desktop">
+            <a href="#blog" style="text-decoration: none; font-weight: normal; margin-left: 20px; color: black">Blog</a>
+            <a href="#about" style="text-decoration: none; font-weight: bold; margin-left: 20px; color: black">About</a>
+            <a href="#contact" style="text-decoration: none; font-weight: normal; margin-left: 20px; color: black">Contact</a>
+        </div>
+        <button onclick="deschideMeniu()" style="background: none; border: none; font-size: 22px; cursor: pointer; color: #111111;">☰</button>
+    </header>
+    <hr style="border: none; height: 0.5px; background-color: lightgray; margin: 10px 0 0 0; padding: 0;">
+    <div id="meniuLateral" style="display: none; position: fixed; top: 0; right: 0; width: 200px; height: 100%; background-color: white; padding: 20px; box-shadow: -2px 0 10px rgba(0,0,0,0.1);">
+        <header style="display: flex; justify-content: space-between; padding-bottom: 10px;">
+            <span style="font-weight: bold; font-size: 20px; color: #111111; align-self: center;">Food Ninja</span>
+            <button onclick="deschideMeniu()" style="background: none; border: none; font-size: 22px; cursor: pointer; color: #111111;">✕</button>
+        </header>
+        <hr style="border: none; height: 0.5px; background-color: lightgray; margin: 10px 0 30px 0;">
+        <a href="#blog" style="display: block; color: #111111; text-decoration: none; margin-bottom: 20px;">Blog</a>
+        <a href="#about" style="display: block; color: #111111; text-decoration: none; margin-bottom: 20px;">About</a>
+        <a href="#contact" style="display: block; color: #111111; text-decoration: none; margin-bottom: 20px;">Contact</a>
+    </div>
+    </div>
+    <header>
+    <h1>About Food Ninja</h1>
+    <h2 style="color: gray;">Exploring the world one meal at a time.</h2>
+    <p style="margin-top: 40px; margin-bottom: 40px">Welcome to Food Ninja, a blog dedicated to food culture, travel, and the stories behind what we eat. I'm James Doe, a food writer and passionate traveler who believes that understanding a place means understanding its food.</p>
+    </header>
+    <main>
+        <section>
+            <h3>My Story</h3>
+            <p>I started Food Ninja in 2020 as a way to document my culinary adventures around the world. What began as a personal journal has grown into a community of food enthusiasts who share a curiosity about food, culture, and the connections between them.</p>
+            <p> From hidden izakayas in Tokyo to street food in Vietnam, from family recipes passed down through generations to the science behind why we crave certain flavors—there's always more to discover about food.</p>
+        </section>
+        <section>
+            <h3>What I Write About</h3>
+            <h2>Food Ninja covers four main areas:</h2>
+            <ul>
+                <li><strong>Travel</strong> — Food experiences and culinary adventures around the world</li>
+                <li><strong>Food Theory</strong> — The science, history, and culture behind food and cooking</li>
+                <li><strong>Recipes</strong> — Tested recipes and techniques worth mastering</li>
+                <li><strong>Restaurants</strong> — Hidden gems and notable dining experiences</li>
+            </ul>
+        </section>
+    </main>
+    <footer>
+        <h3>Let's Connect</h3>
+        <p>I'd love to hear from you! Whether you have a restaurant recommendation, a recipe to share, or just want to chat about food, reach out on the <a href="/contact/">contact page</a>.</p>
+    </footer>
+    <script>
+    function deschideMeniu() {
+    let meniu=document.getElementById("meniuLateral");
+    if (meniu.style.display === "none") {
+        meniu.style.display = "block";
+    } else {
+        meniu.style.display = "none";
+    }
+    }
+</script>
 </body>
 </html>
