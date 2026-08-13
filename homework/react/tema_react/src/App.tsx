@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
 import AboutPage from './pages/about'
+import ArticlePage from './pages/article'
 
 function HomePage() {
   return (
@@ -19,6 +20,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<AboutPage />} />
+        <Route path="/article" element={<ArticlePage />} />
       </Routes>
     </BrowserRouter>
   )
