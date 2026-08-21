@@ -1,18 +1,7 @@
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import AboutPage from './pages/about'
 import ArticlePage from './pages/article'
-
-function HomePage() {
-  return (
-    <div>
-      <h1>Food Ninja</h1>
-
-      <nav>
-        <Link to="/about">About</Link>
-      </nav>
-    </div>
-  )
-}
+import HomePage from './pages/index';
 
 function App() {
   return (
