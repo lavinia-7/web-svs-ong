@@ -27,6 +27,7 @@ import { Link } from "react-router-dom";
 
 function HomePage() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState("");
   const articles = [
     {
       image: greeceimg,
@@ -71,12 +72,17 @@ function HomePage() {
       description: "From banh mi carts at 6am to midnight pho in Hanoi."
     },
   ];
- 
+
+ const filteredArticles = articles.filter((article) => {
+  return selectedCategory === "" || article.category === selectedCategory;
+    });
+
    return (
   <Box component="main"
     sx={{ 
       minHeight: "100vh", 
-      backgroundColor: "#fff"
+      backgroundColor: "#fff",
+      p: 4
     }}
   >
     <Box component="nav"
@@ -320,6 +326,10 @@ function HomePage() {
     >
       <Button
         variant="outlined"
+        onClick={() =>
+        setSelectedCategory(
+        selectedCategory === "Travel" ? "" : "Travel"
+        )}
           sx={{
           borderRadius: "20px",
           textTransform: "none",
@@ -334,6 +344,10 @@ function HomePage() {
 
      <Button
         variant="outlined"
+        onClick={() =>
+        setSelectedCategory(
+        selectedCategory === "Food Theory" ? "" : "Food Theory"
+        )}
         sx={{
           borderRadius: "20px",
           textTransform: "none",
@@ -347,6 +361,10 @@ function HomePage() {
 
       <Button
         variant="outlined"
+        onClick={() =>
+        setSelectedCategory(
+        selectedCategory === "Recipes" ? "" : "Recipes"
+        )}
         sx={{
           borderRadius: "20px",
           textTransform: "none",
@@ -360,6 +378,10 @@ function HomePage() {
 
       <Button
         variant="outlined"
+        onClick={() =>
+        setSelectedCategory(
+        selectedCategory === "Restaurants" ? "" : "Restaurants"
+        )}
         sx={{
           borderRadius: "20px",
           textTransform: "none",
@@ -375,39 +397,53 @@ function HomePage() {
     </Box>
 
     <Box
+    sx={{
+        display: "flex",
+        flexWrap: "wrap",
+        gap: "30px",
+        justifyContent: "center",
+        pt: 5,
+        px: 5
+        }}
+    >
+  {filteredArticles.map((article) => (
+    <Card
+      key={article.title}
       sx={{
-        pt: 4,
-        display: "grid",
-        gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
-        gap: "20px",
-        width: "100%",
+        backgroundColor: "white",
+        width: "450px",
+        border: "1px solid #cccccca9",
+        borderRadius: "12px",
+        boxShadow: "none",
+        overflow: "hidden",
       }}
     >
-    {articles.map((article) => (
-      <Card
-        key={article.title}
-          sx={{
-            border: "1px solid #ddd",
-            borderRadius: "9px",
-            boxShadow: "none",
-            overflow: "hidden",
-          }}
-      >
-       <CardMedia
-          component="img"
-          image={article.image}
-          alt={article.title}
-        />
+      <CardMedia
+        component="img"
+        image={article.image}
+        alt={article.title}
+        sx={{
+          width: "100%",
+          height: "220px",
+          objectFit: "cover",
+          display: "block",
+        }}
+      />
 
-       <CardContent sx={{ padding: "16px" }}>
-         <Chip
+      <CardContent
+        sx={{
+          padding: "20px",
+        }}
+      >
+        <Chip
           label={article.category}
           sx={{
-            backgroundColor: "rgb(12, 12, 90)",
+            backgroundColor: "rgb(1, 1, 83)",
             color: "white",
-            fontSize: "12px",
-            height: "25px",
+            padding: "8px",
             borderRadius: "5px",
+            fontSize: "14px",
+            height: "auto",
             marginBottom: "10px",
           }}
         />
@@ -429,7 +465,7 @@ function HomePage() {
           sx={{
             fontFamily: "Times New Roman, Times, serif",
             fontSize: "13px",
-            color: "#444",
+            color: "gray",
             marginBottom: "12px",
           }}
         >
@@ -440,17 +476,16 @@ function HomePage() {
           sx={{
             fontFamily: "Times New Roman, Times, serif",
             fontSize: "13px",
-            color: "#666",
+            color: "gray",
             lineHeight: 1.3,
           }}
         >
           {article.description}
         </Typography>
       </CardContent>
-  </Card>
-  
-    ))}
-  </Box>
+    </Card>
+  ))}
+</Box>
               
   </Box>
   );
