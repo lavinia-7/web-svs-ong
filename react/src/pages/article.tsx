@@ -13,6 +13,16 @@ import { Link } from "react-router-dom";
 
 function ArticlePage() {
   const [menuOpen, setMenuOpen] = useState(false);
+const [search, setSearch] = useState("");
+const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+const title = "What Traveling Greece For 2 Weeks Taught Me About Life";
+const category = "Travel";
+const matchesSearch = title
+  .toLowerCase()
+  .includes(search.toLowerCase());
+const matchesCategory =
+  selectedCategory === null || selectedCategory === category;
+const matchesArticle = matchesSearch && matchesCategory;
   return (
     <>
       <Container maxWidth="md">
@@ -196,6 +206,37 @@ function ArticlePage() {
             pl: { xs: 0, md: 0 },
           }}
         >
+          <Box 
+          sx={{ 
+            mb: 4,
+            display:"flex",
+            justifyContent:"center",
+             }}
+             >
+  <Box
+  component="input"
+    type="text"
+    placeholder="Search articles..."
+    value={search}
+    onChange={(e) => setSearch(e.target.value)}
+    sx={{
+      width:"100%",
+      maxWidth:"320px",
+      height:"42px",
+      px:2,
+      border:"1px solid #ccc",
+      borderRadius:"6px",
+      fontFamily:"Times New Roman, Times, serif",
+      fontsize:"16px",
+      outline:"none",
+      boxSizing:"border-box",
+      "&:focus":{
+        borderColor:"#2020240",
+      },
+    }}
+  />
+</Box>
+{matchesArticle && (
           <Box component="header">
             <MuiLink
               component={Link}
@@ -318,6 +359,20 @@ function ArticlePage() {
               }}
             />
           </Box>
+)}
+          {!matchesArticle ? (
+  <Typography
+    sx={{
+      fontSize: "16px",
+      fontFamily: "Times New Roman, Times, serif",
+      color: "gray",
+      mb: 4,
+    }}
+  >
+    No articles match your search
+  </Typography>
+) : (
+  <>
           <Box component="section">
             <Typography
               variant="body1"
@@ -421,6 +476,8 @@ function ArticlePage() {
               I came home with olive oil, dried herbs, and a determination to stop eating lunch at my desk. I've managed one of those three things consistently.
             </Typography>
           </Box>
+          </>
+)}
           <Box
             sx={{
               display: "flex",
@@ -429,74 +486,114 @@ function ArticlePage() {
               pb: 4,
             }}
           >
-            <Box
-              sx={{
-                border: "1px solid #ddd",
-                borderRadius: "20px",
-                px: 2,
-                py: 0.8,
-              }}
-            >
-              <Typography
-                sx={{
-                  fontSize: "14px",
-                  color: "gray",
-                }}
-              >
-                Travel
-              </Typography>
-            </Box>
-            <Box
-              sx={{
-                border: "1px solid #ddd",
-                borderRadius: "20px",
-                px: 2,
-                py: 0.8,
-              }}
-            >
-              <Typography
-                sx={{
-                  fontSize: "14px",
-                  color: "gray",
-                }}
-              >
-                Greece
-              </Typography>
-            </Box>
-            <Box
-              sx={{
-                border: "1px solid #ddd",
-                borderRadius: "20px",
-                px: 2,
-                py: 0.8,
-              }}
-            >
-              <Typography
-                sx={{
-                  fontSize: "14px",
-                  color: "gray",
-                }}
-              >
-                Food culture
-              </Typography>
-            </Box>
-            <Box
-              sx={{
-                border: "1px solid #ddd",
-                borderRadius: "20px",
-                px: 2,
-                py: 0.8,
-              }}
-            >
-              <Typography
-                sx={{
-                  fontSize: "14px",
-                  color: "gray",
-                }}
-              >
-                Islands
-              </Typography>
-            </Box>
+           <Box
+  onClick={() =>
+    setSelectedCategory(
+      selectedCategory === "Travel" ? null : "Travel"
+    )
+  }
+  sx={{
+    border: "1px solid #ddd",
+    borderRadius: "20px",
+    px: 2,
+    py: 0.8,
+    cursor: "pointer",
+    backgroundColor:
+      selectedCategory === "Travel" ? "#202040" : "transparent",
+    color:
+      selectedCategory === "Travel" ? "white" : "gray",
+  }}
+>
+  <Typography
+    sx={{
+      fontSize: "14px",
+      color: "inherit",
+    }}
+  >
+    Travel
+  </Typography>
+</Box>
+<Box
+  onClick={() =>
+    setSelectedCategory(
+      selectedCategory === "Greece" ? null : "Greece"
+    )
+  }
+  sx={{
+    border: "1px solid #ddd",
+    borderRadius: "20px",
+    px: 2,
+    py: 0.8,
+    cursor: "pointer",
+    backgroundColor:
+      selectedCategory === "Greece" ? "#202040" : "transparent",
+    color:
+      selectedCategory === "Greece" ? "white" : "gray",
+  }}
+>
+  <Typography
+    sx={{
+      fontSize: "14px",
+      color: "inherit",
+    }}
+  >
+    Greece
+  </Typography>
+</Box>
+<Box
+  onClick={() =>
+    setSelectedCategory(
+      selectedCategory === "Food Culture" ? null : "Food Culture"
+    )
+  }
+  sx={{
+    border: "1px solid #ddd",
+    borderRadius: "20px",
+    px: 2,
+    py: 0.8,
+    cursor: "pointer",
+    backgroundColor:
+      selectedCategory === "Food Culture" ? "#202040" : "transparent",
+    color:
+      selectedCategory === "Food Culture" ? "white" : "gray",
+  }}
+>
+  <Typography
+    sx={{
+      fontSize: "14px",
+      color: "inherit",
+    }}
+  >
+    Food Culture
+  </Typography>
+</Box>
+<Box
+  onClick={() =>
+    setSelectedCategory(
+      selectedCategory === "Islands" ? null : "Islands"
+    )
+  }
+  sx={{
+    border: "1px solid #ddd",
+    borderRadius: "20px",
+    px: 2,
+    py: 0.8,
+    cursor: "pointer",
+    backgroundColor:
+      selectedCategory === "Islands" ? "#202040" : "transparent",
+    color:
+      selectedCategory === "Islands" ? "white" : "gray",
+  }}
+>
+  <Typography
+    sx={{
+      fontSize: "14px",
+      color: "inherit",
+    }}
+  >
+    Islands
+  </Typography>
+</Box>
           </Box>
         </Container>
       </Container>
