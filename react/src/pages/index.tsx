@@ -285,17 +285,18 @@ function HomePage() {
     >
     
       <TextField
-      placeholder="Search for articles"
-      size="small"
-      sx={{
-        width: "445px",
-        maxWidth: "100%",
-        "& .MuiOutlinedInput-root": {
-        borderRadius: "8px",
-         },
-      }}
-      InputProps={{
-      endAdornment: (
+        placeholder="Search for articles"
+        size="small"
+        sx={{
+            width: "445px",
+            maxWidth: "100%",
+            "& .MuiOutlinedInput-root": {
+            borderRadius: "8px",
+            },
+        }}
+        slotProps={{
+        input: {
+        endAdornment: (
         <InputAdornment position="end">
           <SearchIcon
             sx={{
@@ -304,9 +305,10 @@ function HomePage() {
             }}
           />
         </InputAdornment>
-      ),
-      }}
-    />
+        ),
+        },
+        }}
+        />
 
       <Box
       sx={{
