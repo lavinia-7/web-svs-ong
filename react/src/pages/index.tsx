@@ -34,7 +34,8 @@ function HomePage() {
       category: "Travel",
       title: "What Traveling Greece For 2 Weeks Taught Me About Life",
       date: "Jun 21, 2021 · 11 min read",
-      description: "Hidden coves, ancient ruins, and meals that redefine what food means."
+      description: "Hidden coves, ancient ruins, and meals that redefine what food means.",
+      link: "/article"
     },
     {
       image: chickenimg,
@@ -81,8 +82,7 @@ function HomePage() {
   <Box component="main"
     sx={{ 
       minHeight: "100vh", 
-      backgroundColor: "#fff",
-      p: 4
+      backgroundColor: "#fff"
     }}
   >
     <Box component="nav"
@@ -325,69 +325,94 @@ function HomePage() {
       }}
     >
       <Button
-        variant="outlined"
         onClick={() =>
         setSelectedCategory(
         selectedCategory === "Travel" ? "" : "Travel"
         )}
+        variant="outlined"
           sx={{
           borderRadius: "20px",
           textTransform: "none",
           fontFamily: "Times New Roman, Times, serif",
-          color: "#555",
-          borderColor: "#ddd",
+          color: selectedCategory === "Travel" ? "white" : "#555",
+          backgroundColor: selectedCategory === "Travel" ? "rgb(12, 12, 90)" : "white",
+          borderColor: selectedCategory === "Travel" ? "rgb(12, 12, 90)" : "#ddd",
           minWidth: "73px",
+          "&:hover": {
+        backgroundColor: selectedCategory === "Travel"
+        ? "rgb(12, 12, 90)"
+        : "#f5f5f5",
+          }
         }}
       >
       Travel
       </Button>
 
+
      <Button
-        variant="outlined"
         onClick={() =>
         setSelectedCategory(
         selectedCategory === "Food Theory" ? "" : "Food Theory"
-        )}
-        sx={{
+        )}variant="outlined"
+          sx={{
           borderRadius: "20px",
           textTransform: "none",
           fontFamily: "Times New Roman, Times, serif",
-          color: "#555",
-          borderColor: "#ddd",
+          color: selectedCategory === "Food Theory" ? "white" : "#555",
+          backgroundColor: selectedCategory === "Food Theory" ? "rgb(12, 12, 90)" : "white",
+          borderColor: selectedCategory === "Food Theory" ? "rgb(12, 12, 90)" : "#ddd",
+          minWidth: "73px",
+          "&:hover": {
+        backgroundColor: selectedCategory === "Food Theory"
+        ? "rgb(12, 12, 90)"
+        : "#f5f5f5",
+          }
         }}
       > 
         Food Theory
       </Button>
 
       <Button
-        variant="outlined"
         onClick={() =>
         setSelectedCategory(
         selectedCategory === "Recipes" ? "" : "Recipes"
-        )}
-        sx={{
+        )}variant="outlined"
+          sx={{
           borderRadius: "20px",
           textTransform: "none",
           fontFamily: "Times New Roman, Times, serif",
-          color: "#555",
-          borderColor: "#ddd",
+          color: selectedCategory === "Recipes" ? "white" : "#555",
+          backgroundColor: selectedCategory === "Recipes" ? "rgb(12, 12, 90)" : "white",
+          borderColor: selectedCategory === "Recipes" ? "rgb(12, 12, 90)" : "#ddd",
+          minWidth: "73px",
+          "&:hover": {
+        backgroundColor: selectedCategory === "Recipes"
+        ? "rgb(12, 12, 90)"
+        : "#f5f5f5",
+          }
         }}
       >
         Recipes
       </Button>
 
       <Button
-        variant="outlined"
         onClick={() =>
         setSelectedCategory(
         selectedCategory === "Restaurants" ? "" : "Restaurants"
-        )}
-        sx={{
+        )}variant="outlined"
+          sx={{
           borderRadius: "20px",
           textTransform: "none",
           fontFamily: "Times New Roman, Times, serif",
-          color: "#555",
-          borderColor: "#ddd",
+          color: selectedCategory === "Restaurants" ? "white" : "#555",
+          backgroundColor: selectedCategory === "Restaurants" ? "rgb(12, 12, 90)" : "white",
+          borderColor: selectedCategory === "Restaurants" ? "rgb(12, 12, 90)" : "#ddd",
+          minWidth: "73px",
+          "&:hover": {
+        backgroundColor: selectedCategory === "Restaurants"
+        ? "rgb(12, 12, 90)"
+        : "#f5f5f5",
+          }
         }}
       >
         Restaurants
@@ -407,16 +432,19 @@ function HomePage() {
         }}
     >
   {filteredArticles.map((article) => (
-    <Card
-      key={article.title}
-      sx={{
-        backgroundColor: "white",
-        width: "450px",
-        border: "1px solid #cccccca9",
-        borderRadius: "12px",
-        boxShadow: "none",
-        overflow: "hidden",
-      }}
+    <Card component={Link}
+        to={article.link}
+        key={article.title}
+        sx={{
+            backgroundColor: "white",
+            width: "450px",
+            border: "1px solid #cccccca9",
+            borderRadius: "12px",
+            boxShadow: "none",
+            overflow: "hidden",
+            textDecoration: "none",
+            color: "inherit",
+        }}
     >
       <CardMedia
         component="img"
